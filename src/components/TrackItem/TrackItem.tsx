@@ -1,14 +1,15 @@
-import React from 'react';
 import style from './track.module.scss';
 import secondsToMMSS from '../../utils/secondsToMMSS';
-import { AudioContext } from '../../context/AudioContext';
+import { useGetAudioContext } from '../../context/AudioContext';
 import cn from 'classnames';
 import TrackToggle from '../TrackToggle/TrackToggle';
 import TrackPreview from '../TrackPreview/TrackPreview';
 import TrackCredits from '../TrackCredits/TrackCredits';
+import { Track } from '../../types/types';
+import React from 'react';
 
-const TrackItem = trackData => {
-  const { toggleAudio, currentTrack, isPlaying } = React.useContext(AudioContext);
+const TrackItem: React.FC<Track> = (trackData) => {
+  const { toggleAudio, currentTrack, isPlaying } = useGetAudioContext();
 
   const isCurrentTrack = currentTrack.id === trackData.id;
   const formattedDuration = secondsToMMSS(trackData.duration);

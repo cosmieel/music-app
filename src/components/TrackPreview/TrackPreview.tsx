@@ -1,6 +1,11 @@
 import React from 'react';
+import { Track } from '../../types/types';
 
-const TrackPreview = ({style, preview, title, artists}) => {
+type Props = {
+  style: string;
+} & Track;
+
+const TrackPreview: React.FC<Props> = ({style, preview, title, artists}) => {
   return (
     <img className={style} src={preview} alt={`Track preview for ${title} by ${artists}`} />
   );

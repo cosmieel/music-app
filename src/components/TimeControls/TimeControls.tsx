@@ -1,20 +1,20 @@
 import React from 'react';
-import { AudioContext } from '../../context/AudioContext';
+import { useGetAudioContext } from '../../context/AudioContext';
 import { Slider } from '@mui/material';
 import secondsToMMSS from '../../utils/secondsToMMSS';
 
 const MAX_TRACK_SLIDER_SIZE = 1000;
 
-const TimeControls = () => {
-  const { audio, currentTrack } = React.useContext(AudioContext);
+const TimeControls: React.FC = () => {
+  const { audio, currentTrack } = useGetAudioContext();
   const { duration } = currentTrack;
   const [currentTime, setCurrentTime] = React.useState(0);
 
   const formattedCurrentTime = secondsToMMSS(currentTime);
   const sliderCurrentTime = Math.round((currentTime / duration) * MAX_TRACK_SLIDER_SIZE);
 
-  const handleChangeCurrentTime = (_, value) => {
-    const time = Math.round((value / MAX_TRACK_SLIDER_SIZE) * duration);
+  const handleChangeCurrentTime = (_: Event, value: number | number[]) => {
+    const time = Math.round((Number(value) / MAX_TRACK_SLIDER_SIZE) * duration);
 
     setCurrentTime(time);
     audio.currentTime = time;

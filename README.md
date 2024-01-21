@@ -1,4 +1,4 @@
-## React + Vite
+## React + TypeScript + Vite
 
 ### [Demo](https://music-app-ddm.vercel.app/)  
 

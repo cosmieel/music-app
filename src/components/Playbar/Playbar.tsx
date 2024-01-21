@@ -1,13 +1,13 @@
 import React from 'react';
 import style from './playbar.module.scss';
-import { AudioContext } from '../../context/AudioContext';
+import { useGetAudioContext } from '../../context/AudioContext';
 import TrackPreview from '../TrackPreview/TrackPreview';
 import TrackToggle from '../TrackToggle/TrackToggle';
 import TrackCredits from '../TrackCredits/TrackCredits';
 import TrackSlider from '../TrackSlider/TrackSlider';
 
-const Playbar = () => {
-  const { currentTrack, isPlaying, toggleAudio } = React.useContext(AudioContext);
+const Playbar: React.FC = () => {
+  const { currentTrack, isPlaying, toggleAudio } = useGetAudioContext();
 
   return (
     <div className={style.playbar}>

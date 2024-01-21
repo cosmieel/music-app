@@ -4,12 +4,13 @@ import { trackSearch } from './trackSearch.js';
 import TrackSearch from '../../components/TrackSearch/TrackSearch.jsx';
 import TrackList from '../../components/TracksList/TrackList.jsx';
 import { api } from '../../api/api.js';
+import { Track } from '../../types/types.js';
 
 const MainPage = () => {
   const tracksList = api.getTracksList();
-  const [tracks, setTracks] = React.useState(tracksList);
+  const [tracks, setTracks] = React.useState<Track[]>(tracksList);
 
-  const handleChange = event => {
+  const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const foundedTracks = trackSearch(event.target.value, tracksList);
     setTracks(foundedTracks);
   };

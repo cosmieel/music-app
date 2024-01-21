@@ -1,8 +1,13 @@
 import React from 'react';
 import secondsToMMSS from '../../utils/secondsToMMSS';
 import TimeControls from '../TimeControls/TimeControls';
+import { Track } from '../../types/types';
 
-const TrackSlider = ({ style, duration }) => {
+type Props = {
+  style: string;
+} & Track;
+
+const TrackSlider: React.FC<Props> = ({ style, duration }) => {
   const formattedDuration = secondsToMMSS(duration);
 
   return (

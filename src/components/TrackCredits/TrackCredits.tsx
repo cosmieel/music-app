@@ -1,6 +1,11 @@
 import React from 'react';
+import { Track } from '../../types/types';
 
-const TrackCredits = ({ style, title, artists }) => {
+type Props = {
+  style: string;
+} & Track;
+
+const TrackCredits: React.FC<Props> = ({ style, title, artists }) => {
   return (
     <div className={style}>
       <h4>{title}</h4>
